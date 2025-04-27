@@ -1,0 +1,40 @@
+<!-- auth.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login to Collab Editor</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="firebase/config.js"></script>
+</head>
+<body>
+  <main class="auth-form">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="signup()">Sign Up</button>
+    <p id="message"></p>
+  </main>
+
+  <script>
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const msg = document.getElementById("message");
+
+    function login() {
+      firebase.auth().signInWithEmailAndPassword(emailInput.value, passwordInput.value)
+        .then(() => window.location.href = "index.html")
+        .catch(e => msg.innerText = e.message);
+    }
+
+    function signup() {
+      firebase.auth().createUserWithEmailAndPassword(emailInput.value, passwordInput.value)
+        .then(() => msg.innerText = "Account created! Now log in.")
+        .catch(e => msg.innerText = e.message);
+    }
+  </script>
+</body>
+</html>

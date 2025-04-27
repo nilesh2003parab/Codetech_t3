@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collaborative Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="firebase/config.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Real-Time Collaborative Editor</h1>
+  </header>
+  <main>
+    <section class="toolbar">
+      <select id="docSelector"></select>
+      <input type="text" id="newDocName" placeholder="New document name" />
+      <button onclick="createDocument()">Create</button>
+    </section>
+  
+    <textarea id="editor" placeholder="Start typing..."></textarea>
+  </main>
+  <div><main>
+    <section class="toolbar">
+      <select id="docSelector"></select>
+      <input type="text" id="newDocName" placeholder="New document name" />
+      <button onclick="createDocument()">Create</button>
+    </section>
+  
+    <textarea id="editor" placeholder="Start typing..."></textarea>
+  
+    <section id="activeUsers">
+      <h3>Active Users:</h3>
+      <ul id="userList"></ul>
+    </section>
+  </main>
+  </div>
+</body>
+</html>
